@@ -12,7 +12,6 @@
             padding: 20px;
         }
 
-        /* 🎬 سندوقی فیلمەکان کە وێنەی باکگراوندی فیلمی لەسەرە */
         .post-card-with-bg {
             background-image: linear-gradient(rgba(18, 20, 29, 0.85), rgba(18, 20, 29, 0.95)), url('movies.jpeg');
             background-size: cover;
@@ -61,6 +60,11 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .comment-input-box button:hover {
+            background-color: #4338ca;
         }
 
         .comment-card {
@@ -154,7 +158,7 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        // 🔑 پاسوۆردی بەڕێوەبەر
+        // 🔑 پاسوۆردی بەڕێوەبەر بۆ سڕینەوە
         const ADMIN_PASSWORD = "rwanga77";
 
         function sendComment() {
@@ -166,7 +170,6 @@
                 return;
             }
 
-            // ⚡ لێرە جیاکراوەتەوە: کۆمێنتەکانی فیلم دەچنە بەشی movie_comments
             database.ref("movie_comments").push({
                 name: name,
                 message: message
@@ -213,4 +216,3 @@
         }
     </script>
 </body>
-</html>
