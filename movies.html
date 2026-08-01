@@ -112,6 +112,23 @@
             opacity: 1;
             transform: scale(1.2);
         }
+
+        .btn-back {
+            display: inline-block;
+            background-color: #21262d;
+            color: #c9d1d9;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: 1px solid #30363d;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .btn-back:hover {
+            background-color: #30363d;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -148,6 +165,7 @@
 
     </main>
 
+    <!-- Firebase SDK (v8) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
@@ -155,15 +173,21 @@
         const firebaseConfig = {
             databaseURL: "https://rwanga-default-rtdb.firebaseio.com"
         };
-        firebase.initializeApp(firebaseConfig);
+        
+        // Check if firebase is already initialized to prevent double init error
+        if (!firebase.apps.length) {
+            firebase.initializeApp(firebaseConfig);
+        }
+        
         const database = firebase.database();
-
-        // 🔑 پاسوۆردی بەڕێوەبەر بۆ سڕینەوە
         const ADMIN_PASSWORD = "rwanga77";
 
         function sendComment() {
-            const name = document.getElementById("userName").value.trim();
-            const message = document.getElementById("userComment").value.trim();
+            const nameInput = document.getElementById("userName");
+            const messageInput = document.getElementById("userComment");
+            
+            const name = nameInput.value.trim();
+            const message = messageInput.value.trim();
 
             if (name === "" || message === "") {
                 alert("تکایە ناو و کۆمێنت بنووسە!");
@@ -173,15 +197,22 @@
             database.ref("movie_comments").push({
                 name: name,
                 message: message
+            }).then(() => {
+                nameInput.value = "";
+                messageInput.value = "";
+            }).catch((error) => {
+                alert("هەڵەیەک ڕووی دا لەناردنی کۆمێنت: " + error.message);
             });
-
-            document.getElementById("userName").value = "";
-            document.getElementById("userComment").value = "";
         }
 
         database.ref("movie_comments").on("value", function(snapshot) {
             const container = document.getElementById("commentsContainer");
             container.innerHTML = "";
+
+            if (!snapshot.exists()) {
+                container.innerHTML = '<p style="color: #8b949e; text-align: center;">هێشتا هیچ کۆمێنتێک نییە. یەکەم کەس ببنە ڕاکەتان بنووسن!</p>';
+                return;
+            }
 
             snapshot.forEach(function(childSnapshot) {
                 const key = childSnapshot.key;
@@ -194,7 +225,7 @@
                             <div class="user-avatar">${firstLetter}</div>
                             <div class="comment-content">
                                 <h4 style="color: #fff; margin-bottom: 4px;">${data.name}</h4>
-                                <p style="color: #a0a6b8; font-size: 14px;">${data.message}</p>
+                                <p style="color: #a0a6b8; font-size: 14px; word-break: break-word;">${data.message}</p>
                             </div>
                         </div>
                         <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوە">🗑️</button>
@@ -208,11 +239,15 @@
             const password = prompt("تکایە وشەی نهێنی (پاسوۆرد)ی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
             
             if (password === ADMIN_PASSWORD) {
-                database.ref("movie_comments/" + key).remove();
-                alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
+                database.ref("movie_comments/" + key).remove().then(() => {
+                    alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
+                }).catch((error) => {
+                    alert("هەڵە ڕووی دا لە سڕینەوە: " + error.message);
+                });
             } else if (password !== null) {
                 alert("وشەی نهێنی هەڵەیە! تەنها بەڕێوەبەر دەتوانێت کۆمێنت بسڕێتەوە.");
             }
         }
     </script>
 </body>
+</html>
