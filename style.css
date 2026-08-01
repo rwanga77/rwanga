@@ -156,3 +156,12 @@ header p {
 .btn-yellow:hover {
   background-color: #e09b00;
 }
+
+/* ڕێکخستنی وێنەی هەموو کارتەکان */
+.card img {
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+    display: block !important;
+}
