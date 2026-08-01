@@ -12,7 +12,6 @@
             padding: 20px;
         }
 
-        /* 🖼️ سندوقەکە کە وێنەکە بوەتە باکگراوندی */
         .post-card-with-bg {
             background-image: linear-gradient(rgba(18, 20, 29, 0.85), rgba(18, 20, 29, 0.95)), url('books.jpeg');
             background-size: cover;
@@ -61,11 +60,6 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .comment-input-box button:hover {
-            background-color: #4338ca;
         }
 
         .comment-card {
@@ -75,7 +69,14 @@
             padding: 15px;
             margin-bottom: 12px;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .comment-left {
+            display: flex;
             gap: 15px;
+            align-items: center;
         }
 
         .user-avatar {
@@ -89,6 +90,21 @@
             justify-content: center;
             font-weight: bold;
             flex-shrink: 0;
+        }
+
+        .delete-btn {
+            background: transparent;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 5px;
+            opacity: 0.6;
+            transition: opacity 0.2s;
+        }
+
+        .delete-btn:hover {
+            opacity: 1;
         }
     </style>
 </head>
@@ -117,7 +133,6 @@
 
             <hr style="border: 0.5px solid #222634; margin-bottom: 20px;">
 
-            <!-- لێرە کۆمێنتەکان بۆ هەمووان ڕاستەوخۆ دەردەکەون -->
             <div id="commentsContainer"></div>
         </section>
 
@@ -127,7 +142,6 @@
 
     </main>
 
-    <!-- ⚡ جافاسکریپت + بەستنەوە بە دەیتابەیسەکەت ⚡ -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
@@ -137,6 +151,9 @@
         };
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
+
+        // 🔑 پاسوۆردی نوێی تایبەت بە خۆت
+        const ADMIN_PASSWORD = "rwanga77";
 
         function sendComment() {
             const name = document.getElementById("userName").value.trim();
@@ -156,21 +173,41 @@
             document.getElementById("userComment").value = "";
         }
 
-        database.ref("comments").on("child_added", function(snapshot) {
-            const data = snapshot.val();
-            const firstLetter = data.name ? data.name.charAt(0) : "؟";
+        database.ref("comments").on("value", function(snapshot) {
+            const container = document.getElementById("commentsContainer");
+            container.innerHTML = "";
 
-            const commentHTML = `
-                <div class="comment-card">
-                    <div class="user-avatar">${firstLetter}</div>
-                    <div class="comment-content">
-                        <h4 style="color: #fff; margin-bottom: 4px;">${data.name}</h4>
-                        <p style="color: #a0a6b8; font-size: 14px;">${data.message}</p>
+            snapshot.forEach(function(childSnapshot) {
+                const key = childSnapshot.key;
+                const data = childSnapshot.val();
+                const firstLetter = data.name ? data.name.charAt(0) : "؟";
+
+                const commentHTML = `
+                    <div class="comment-card" id="card-${key}">
+                        <div class="comment-left">
+                            <div class="user-avatar">${firstLetter}</div>
+                            <div class="comment-content">
+                                <h4 style="color: #fff; margin-bottom: 4px;">${data.name}</h4>
+                                <p style="color: #a0a6b8; font-size: 14px;">${data.message}</p>
+                            </div>
+                        </div>
+                        <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوەی بەڕێوەبەر">🗑️</button>
                     </div>
-                </div>
-            `;
-            document.getElementById("commentsContainer").innerHTML += commentHTML;
+                `;
+                container.innerHTML += commentHTML;
+            });
         });
+
+        function deleteComment(key) {
+            const password = prompt("تکایە وشەی نهێنی (پاسوۆرد)ی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
+            
+            if (password === ADMIN_PASSWORD) {
+                database.ref("comments/" + key).remove();
+                alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
+            } else if (password !== null) {
+                alert("وشەی نهێنی هەڵەیە! تەنها بەڕێوەبەر دەتوانێت کۆمێنت بسڕێتەوە.");
+            }
+        }
     </script>
 </body>
 </html>
