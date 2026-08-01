@@ -12,7 +12,7 @@
             padding: 20px;
         }
 
-        /* 🖼️ تەنها سندوقەکە وێنەکەی لەسەر باکگراوندەکەیەتی */
+        /* 🖼️ سندوقەکە کە وێنەکە بوەتە باکگراوندی */
         .post-card-with-bg {
             background-image: linear-gradient(rgba(18, 20, 29, 0.85), rgba(18, 20, 29, 0.95)), url('books.jpeg');
             background-size: cover;
@@ -25,7 +25,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* بەشی کۆمێنتەکان */
         .comments-section {
             background-color: #12141d;
             border: 1px solid #222634;
@@ -62,6 +61,11 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .comment-input-box button:hover {
+            background-color: #4338ca;
         }
 
         .comment-card {
@@ -92,7 +96,6 @@
 
     <main class="page-container">
         
-        <!-- سندوقی سەرەکی (هیچ وێنەیەک لە ناوەوەیدا نییە، تەنها باکگراوندەکەیەتی) -->
         <article class="post-card-with-bg">
             <h1 style="color: #ffc107; margin-bottom: 15px;">📚 خۆشترین کتێبەکانی ساڵ</h1>
             
@@ -103,25 +106,19 @@
             </div>
         </article>
 
-        <!-- بەشی کۆمێنتەکان -->
         <section class="comments-section">
             <h3 style="color: #ffc107; font-size: 20px; margin-bottom: 20px;">💬 ڕا و پێشنیاری بینەران</h3>
 
             <div class="comment-input-box">
-                <input type="text" placeholder="ناوی تۆ...">
-                <textarea rows="3" placeholder="ڕا یان پێشنیاری خۆت دەربارەی کتێب بنووسە..."></textarea>
-                <button type="button">ناردنی کۆمێنت 🚀</button>
+                <input type="text" id="userName" placeholder="ناوی تۆ...">
+                <textarea id="userComment" rows="3" placeholder="ڕا یان پێشنیاری خۆت دەربارەی کتێب بنووسە..."></textarea>
+                <button type="button" onclick="sendComment()">ناردنی کۆمێنت 🚀</button>
             </div>
 
             <hr style="border: 0.5px solid #222634; margin-bottom: 20px;">
 
-            <div class="comment-card">
-                <div class="user-avatar">أ</div>
-                <div class="comment-content">
-                    <h4 style="color: #fff; margin-bottom: 4px;">ئەحمەد</h4>
-                    <p style="color: #a0a6b8; font-size: 14px;">کتێبی زۆر بەسوودن، پێشنیار دەکەم کتێبی نوێتر زێدە بکەن!</p>
-                </div>
-            </div>
+            <!-- لێرە کۆمێنتەکان بۆ هەمووان ڕاستەوخۆ دەردەکەون -->
+            <div id="commentsContainer"></div>
         </section>
 
         <div style="text-align: center; margin-top: 30px;">
@@ -130,5 +127,50 @@
 
     </main>
 
+    <!-- ⚡ جافاسکریپت + بەستنەوە بە دەیتابەیسەکەت ⚡ -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script>
+        const firebaseConfig = {
+            databaseURL: "https://rwanga-default-rtdb.firebaseio.com"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        function sendComment() {
+            const name = document.getElementById("userName").value.trim();
+            const message = document.getElementById("userComment").value.trim();
+
+            if (name === "" || message === "") {
+                alert("تکایە ناو و کۆمێنت بنووسە!");
+                return;
+            }
+
+            database.ref("comments").push({
+                name: name,
+                message: message
+            });
+
+            document.getElementById("userName").value = "";
+            document.getElementById("userComment").value = "";
+        }
+
+        database.ref("comments").on("child_added", function(snapshot) {
+            const data = snapshot.val();
+            const firstLetter = data.name ? data.name.charAt(0) : "؟";
+
+            const commentHTML = `
+                <div class="comment-card">
+                    <div class="user-avatar">${firstLetter}</div>
+                    <div class="comment-content">
+                        <h4 style="color: #fff; margin-bottom: 4px;">${data.name}</h4>
+                        <p style="color: #a0a6b8; font-size: 14px;">${data.message}</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById("commentsContainer").innerHTML += commentHTML;
+        });
+    </script>
 </body>
 </html>
