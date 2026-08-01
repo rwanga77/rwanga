@@ -6,33 +6,41 @@
     <title>خۆشترین کتێبەکان - ماڵپەڕی ڕوانگە</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* دیزاینی گشتی شوێنی کتێبەکان */
         .page-container {
             max-width: 800px;
             margin: 30px auto;
             padding: 20px;
         }
 
-        /* بەشی کۆمێنتەکان وەک KurdSubtitle */
+        .post-card {
+            background-color: #1a1d2b;
+            border: 1px solid #222634;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+
+        /* 🖼️ ستایلی وێنە تایبەتەکەی خۆت (کتێبە بەرزەکان) */
+        .my-custom-book-img {
+            max-width: 320px; /* قەبارەی گونجاو بۆ وێنەی بەرز */
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 2px solid #2d3245;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
         .comments-section {
             background-color: #12141d;
             border: 1px solid #222634;
             border-radius: 12px;
             padding: 25px;
-            margin-top: 40px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
         }
 
-        .comments-title {
-            color: #ffc107;
-            font-size: 20px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* سندوقی بنووسە / کۆمێنت */
         .comment-input-box {
             display: flex;
             flex-direction: column;
@@ -50,12 +58,6 @@
             color: #fff;
             font-size: 14px;
             outline: none;
-            transition: border-color 0.3s;
-        }
-
-        .comment-input-box input:focus, 
-        .comment-input-box textarea:focus {
-            border-color: #4f46e5;
         }
 
         .comment-input-box button {
@@ -67,14 +69,8 @@
             border-radius: 6px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
         }
 
-        .comment-input-box button:hover {
-            background-color: #4338ca;
-        }
-
-        /* لیسی کۆمێنتە هاتووەکان */
         .comment-card {
             background-color: #1a1d2b;
             border: 1px solid #282d3f;
@@ -95,19 +91,7 @@
             align-items: center;
             justify-content: center;
             font-weight: bold;
-            font-size: 18px;
-        }
-
-        .comment-content h4 {
-            color: #fff;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
-
-        .comment-content p {
-            color: #a0a6b8;
-            font-size: 14px;
-            line-height: 1.5;
+            flex-shrink: 0;
         }
     </style>
 </head>
@@ -115,23 +99,23 @@
 
     <main class="page-container">
         
-        <!-- بەشی سەرەوە (کتێبەکە) -->
-        <article class="post-card" style="text-align: center;">
+        <article class="post-card">
             <h1 style="color: #ffc107;">📚 خۆشترین کتێبەکانی ساڵ</h1>
-            <img src="books.jpeg" alt="کتێبکان" style="max-width: 100%; height: 220px; object-fit: cover; border-radius: 8px; margin: 15px 0;">
             
-            <div style="background: #161b22; text-align: right; padding: 15px; border-radius: 8px; border-right: 4px solid #4caf50;">
-                <h3 style="color: #4caf50; margin-bottom: 8px;">📖 پێشنیارەکانی ڕوانگە:</h3>
-                <p style="color: #ccc;">• کتێبی ١: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
+            <!-- 📸 ئەمەش وێنە بەرزەکەی خۆت -->
+            <img src="book.jpeg" alt="خۆشترین کتێبەکان" class="my-custom-book-img">
+            
+            <div style="background: #12141d; text-align: right; padding: 15px; border-radius: 8px; border-right: 4px solid #4caf50; border: 1px solid #222634;">
+                <h3 style="color: #4caf50; margin-bottom: 10px;">📖 پێشنیارەکانی ڕوانگە:</h3>
+                <p style="color: #ccc; margin-bottom: 5px;">• کتێبی ١: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
                 <p style="color: #ccc;">• کتێبی ٢: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
             </div>
         </article>
 
-        <!-- بەشی کۆمێنت بە شێوازی KurdSubtitle -->
+        <!-- بەشی کۆمێنتەکان -->
         <section class="comments-section">
-            <h3 class="comments-title">💬 ڕا و پێشنیاری بینەران</h3>
+            <h3 style="color: #ffc107; font-size: 20px; margin-bottom: 20px;">💬 ڕا و پێشنیاری بینەران</h3>
 
-            <!-- سندوقی کۆمێنت نوسین -->
             <div class="comment-input-box">
                 <input type="text" placeholder="ناوی تۆ...">
                 <textarea rows="3" placeholder="ڕا یان پێشنیاری خۆت دەربارەی کتێب بنووسە..."></textarea>
@@ -140,26 +124,15 @@
 
             <hr style="border: 0.5px solid #222634; margin-bottom: 20px;">
 
-            <!-- نموونەی کۆمێنتەکان (کە خەڵک نووسیویانە) -->
             <div class="comment-card">
                 <div class="user-avatar">أ</div>
                 <div class="comment-content">
-                    <h4>ئەحمەد</h4>
-                    <p>کتێبی زۆر بەسوودن، پێشنیار دەکەم کتێبی (پیاوێک لە ئاسن)یش زێدە بکەن بۆ لیستەکە!</p>
+                    <h4 style="color: #fff; margin-bottom: 4px;">ئەحمەد</h4>
+                    <p style="color: #a0a6b8; font-size: 14px;">کتێبی زۆر بەسوودن، پێشنیار دەکەم کتێبی نوێتر زێدە بکەن!</p>
                 </div>
             </div>
-
-            <div class="comment-card">
-                <div class="user-avatar">س</div>
-                <div class="comment-content">
-                    <h4>سارا</h4>
-                    <p>دەستتان خۆش بێت بۆ ئەم ماڵپەڕە جوانە 🌸</p>
-                </div>
-            </div>
-
         </section>
 
-        <!-- دوگمەی گەڕانەوە -->
         <div style="text-align: center; margin-top: 30px;">
             <a href="index.html" class="btn-back">⬅ گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
         </div>
