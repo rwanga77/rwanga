@@ -12,29 +12,20 @@
             padding: 20px;
         }
 
-        .post-card {
-            background-color: #1a1d2b;
-            border: 1px solid #222634;
-            border-radius: 12px;
-            padding: 25px;
+        /* 🖼️ سندوقەکە کە وێنەکە بوەتە باکگراوندی */
+        .post-card-with-bg {
+            background-image: linear-gradient(rgba(18, 20, 29, 0.85), rgba(18, 20, 29, 0.95)), url('books.jpeg');
+            background-size: cover;
+            background-position: center;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            padding: 35px 25px;
             text-align: center;
             margin-bottom: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* ستایلی وێنەکە */
-        .my-custom-book-img {
-            max-width: 320px;
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 2px solid #2d3245;
-            margin: 20px 0;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
+        /* بەشی کۆمێنتەکان */
         .comments-section {
             background-color: #12141d;
             border: 1px solid #222634;
@@ -72,22 +63,43 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .comment-card {
+            background-color: #1a1d2b;
+            border: 1px solid #282d3f;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 42px;
+            height: 42px;
+            background-color: #31374a;
+            color: #ffc107;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 <body>
 
     <main class="page-container">
         
-        <article class="post-card">
-            <h1 style="color: #ffc107;">📚 خۆشترین کتێبەکانی ساڵ</h1>
+        <!-- سندوقی سەرەکی کە وێنەکەی لەسەر باکگراوندەکەیەتی -->
+        <article class="post-card-with-bg">
+            <h1 style="color: #ffc107; margin-bottom: 15px;">📚 خۆشترین کتێبەکانی ساڵ</h1>
             
-            <!-- وێنەی کتێبەکە -->
-            <img src="book.jpg" alt="خۆشترین کتێبەکان" class="my-custom-book-img">
-            
-            <div style="background: #12141d; text-align: right; padding: 15px; border-radius: 8px; border-right: 4px solid #4caf50; border: 1px solid #222634;">
+            <div style="background: rgba(18, 20, 29, 0.7); text-align: right; padding: 20px; border-radius: 10px; border-right: 4px solid #4caf50; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(5px); margin-top: 20px;">
                 <h3 style="color: #4caf50; margin-bottom: 10px;">📖 پێشنیارەکانی ڕوانگە:</h3>
-                <p style="color: #ccc; margin-bottom: 5px;">• کتێبی ١: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
-                <p style="color: #ccc;">• کتێبی ٢: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
+                <p style="color: #fff; margin-bottom: 8px;">• کتێبی ١: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
+                <p style="color: #fff;">• کتێبی ٢: ناوی کتێبەکە — کورتەیەک دەربارەی کتێبەکە</p>
             </div>
         </article>
 
@@ -99,6 +111,16 @@
                 <input type="text" placeholder="ناوی تۆ...">
                 <textarea rows="3" placeholder="ڕا یان پێشنیاری خۆت دەربارەی کتێب بنووسە..."></textarea>
                 <button type="button">ناردنی کۆمێنت 🚀</button>
+            </div>
+
+            <hr style="border: 0.5px solid #222634; margin-bottom: 20px;">
+
+            <div class="comment-card">
+                <div class="user-avatar">أ</div>
+                <div class="comment-content">
+                    <h4 style="color: #fff; margin-bottom: 4px;">ئەحمەد</h4>
+                    <p style="color: #a0a6b8; font-size: 14px;">کتێبی زۆر بەسوودن، پێشنیار دەکەم کتێبی نوێتر زێدە بکەن!</p>
+                </div>
             </div>
         </section>
 
