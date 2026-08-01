@@ -3,17 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>کتێبەکان - ماڵپەڕی ڕوانگە</title>
+    <title>خۆشترین کتێبەکانی ساڵ - ڕوانگە</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main class="container">
         <article class="post-card">
-            <h1 style="text-align: center; color: #ffc107;">📚 بەشی کتێبەکان</h1>
-            <p style="text-align: center; color: #ccc;">ئەم بەشە بۆ ناساندن و پێشنیارکردنی کتێبە بەسوودەکانە.</p>
+            <h1 style="text-align: center; color: #ffc107;">📚 خۆشترین کتێبەکانی ساڵ</h1>
+            <p style="text-align: center; color: #ccc;">ئەمەش لیستی ئەو کتێبانەی ئێمە پێشنیاری دەکەین:</p>
 
-            <hr style="margin: 20px 0; border: 0.5px solid #444;">
-            <p style="text-align: center; color: #888;">بەم زووانە بابەت و زانیارییەکان زێدە دەکرێن...</p>
+            <!-- 1. بەشی پۆستەکانی خۆت -->
+            <div class="my-posts" style="margin: 20px 0; background: #1a1a2e; padding: 15px; border-radius: 8px;">
+                <h3 style="color: #4caf50;">📖 پێشنیارەکانی ڕوانگە:</h3>
+                <ul>
+                    <li style="color: #fff; margin-bottom: 8px;"><b>کتێبی 1:</b> ناوی کتێبەکە - کورته ڕوونکردنەوەیەک</li>
+                    <li style="color: #fff; margin-bottom: 8px;"><b>کتێبی 2:</b> ناوی کتێبەکە - کورته ڕوونکردنەوەیەک</li>
+                </ul>
+            </div>
+
+            <hr style="margin: 25px 0; border: 0.5px solid #444;">
+
+            <!-- 2. بەشی کۆمێنت و پێشنیاری سەردانیکەران -->
+            <h3 style="text-align: center; color: #ffc107;">💬 ڕا و پێشنیاری سەردانیکەران</h3>
+            <p style="text-align: center; color: #888; font-size: 14px;">تۆش دەتوانیت لە خوارەوە ناوی ئەو کتێبە بنووسیت کە بە لای تۆوە خۆشترینە:</p>
+
+            <!-- سیستمی کۆمێنت (Utterances) -->
+            <script src="https://utteranc.es/client.js"
+                    repo="rwanga77/rwanga"
+                    issue-term="pathname"
+                    theme="github-dark"
+                    crossorigin="anonymous"
+                    async>
+            </script>
 
             <br><br>
             <a href="index.html" class="btn-back">⬅ گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
