@@ -21,20 +21,20 @@
 
   <div class="main-container">
 
-  <!-- ٣. مێژووی کوردستان -->
-<a href="kurdish-history.html" class="card-link">
-    <div class="card">
+    <!-- ١. مێژووی کوردستان -->
+    <a href="kurdish-history.html" class="card-link">
+      <div class="card">
         <h2>☀️ مێژووی کوردستان</h2>
         <img src="kurd.jpeg" alt="مێژووی کوردستان">
         <button class="btn">چوونه ناو بەشەکە ⬅️</button>
-    </div>
-</a>
-</a>
+      </div>
+    </a>
+
     <!-- ٢. مێژووی ئایینەکان -->
     <a href="religions.html" class="card-link">
       <div class="card">
         <h2>🕌 ✝️ ✡️ مێژووی ئایینەکان</h2>
-       <img src="ayn.jpeg" alt="مێژووی ئایین">
+        <img src="ayn.jpeg" alt="مێژووی ئایین">
         <button class="btn">چوونە ناو بەشەکە ⬅️</button>
       </div>
     </a>
@@ -84,7 +84,7 @@
       </div>
     </a>
 
-    <!-- زانیاری و پەخشی تۆپی پێ -->
+    <!-- ٨. زانیاری و پەخشی تۆپی پێ -->
     <a href="football.html" class="card-link">
       <div class="card">
         <h2>⚽ زانیاری و پەخشی تۆپی پێ</h2>
@@ -101,7 +101,8 @@
         <button class="btn">سەیرکردنی هەواڵەکان ⬅️</button>
       </div>
     </a>
-<!-- خۆشترین فیلمەکانی ساڵ -->
+
+    <!-- ١٠. خۆشترین فیلمەکانی ساڵ -->
     <a href="movie.html" class="card-link">
       <div class="card">
         <h2>🎬 خۆشترین فیلمەکانی ساڵ</h2>
@@ -109,137 +110,141 @@
         <button class="btn">چوونه ناو بەشەکە ⬅️</button>
       </div>
     </a>
-   <!-- خۆشترین کتێبەکانی ساڵ -->
-<a href="books.html" class="card-link">
-    <div class="card">
+
+    <!-- ١١. خۆشترین کتێبەکانی ساڵ -->
+    <a href="books.html" class="card-link">
+      <div class="card">
         <h2>📚 خۆشترین کتێبەکانی ساڵ</h2>
         <img src="books.jpeg" alt="خۆشترین کتێبەکانی ساڵ">
         <button class="btn">چوونه ناو بەشەکە ⬅️</button>
-    </div>
-</a>
+      </div>
+    </a>
 
     <!-- ١٢. داواکردنی دروستکردنی CV -->
     <div class="card">
       <h2>📄 داواکردنی دروستکردنی CV</h2>
       <img src="https://images.pexels.com/photos/5989933/pexels-photo-5989933.jpeg?auto=compress&cs=tinysrgb&w=500" alt="سی ڤی">
-      <p style="color: #f2a900; font-weight: bold; margin-bottom: 10px;">/p>
       <a href="cv.html" class="btn">سەیرکردنی CV 📄</a>
     </div>
 
-   <div class="card" style="width: 100%; max-width: 600px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px auto; color: #fff;">
-    <h3 style="color: #f2a900; margin-top: 0;">💬 ڕەخنە و پێشنیارەکان</h3>
-    
-    <!-- سندوقی نوسینی کۆمێنت -->
-    <div style="margin-bottom: 20px;">
-        <input type="text" id="userName" placeholder="ناوی خۆت..." style="width: 100%; padding: 10px; margin-bottom: 8px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box;">
-        <textarea id="userMessage" rows="3" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; padding: 10px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; resize: none;"></textarea>
-        <button onclick="postComment()" class="btn" style="width: 100%; background: #c0392b; color: white; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 8px;">ناردنی پەیام</button>
+    <!-- ١٣. بەشی ڕەخنە و پێشنیارەکان (فایەربەیس + ڕێپڵای + سڕینەوە) -->
+    <div class="card" style="width: 100%; max-width: 600px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px auto; color: #fff;">
+        <h3 style="color: #f2a900; margin-top: 0;">💬 ڕەخنە و پێشنیارەکان</h3>
+        
+        <!-- سندوقی نوسینی کۆمێنت -->
+        <div style="margin-bottom: 20px;">
+            <input type="text" id="userName" placeholder="ناوی خۆت..." style="width: 100%; padding: 10px; margin-bottom: 8px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box;">
+            <textarea id="userMessage" rows="3" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; padding: 10px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; resize: none;"></textarea>
+            <button onclick="postComment()" class="btn" style="width: 100%; background: #c0392b; color: white; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 8px;">ناردنی پەیام</button>
+        </div>
+
+        <!-- شوێنی نیشاندانی کۆمێنت و ڕێپڵایەکان -->
+        <div id="commentsContainer"></div>
     </div>
 
-    <!-- شوێنی نیشاندانی کۆمێنت و ڕێپڵایەکان -->
-    <div id="commentsContainer"></div>
-</div>
+  </div>
 
-<script>
-    const ADMIN_PASSWORD = "123"; // لێرە پاسوۆردی بەڕێوەبەر بنووسە
+  <script>
+      const ADMIN_PASSWORD = "123"; // لێرە پاسوۆردی بەڕێوەبەرە (دەتوانیت بیگۆڕیت)
 
-    // ناردنی کۆمێنتی سەرەکی
-    function postComment() {
-        const name = document.getElementById('userName').value;
-        const message = document.getElementById('userMessage').value;
+      // ناردنی کۆمێنتی سەرەکی
+      function postComment() {
+          const name = document.getElementById('userName').value;
+          const message = document.getElementById('userMessage').value;
 
-        if(!name.trim() || !message.trim()) {
-            alert('تکایە ناو و پەیامەکە پربکەرەوە!');
-            return;
-        }
+          if(!name.trim() || !message.trim()) {
+              alert('تکایە ناو و پەیامەکە پربکەرەوە!');
+              return;
+          }
 
-        const newCommentRef = database.ref("comments").push();
-        newCommentRef.set({
-            name: name,
-            message: message,
-            reply: "" // سەرەتای بێ ڕێپڵای
-        });
+          const newCommentRef = database.ref("comments").push();
+          newCommentRef.set({
+              name: name,
+              message: message,
+              reply: "" // سەرەتای بێ ڕێپڵای
+          });
 
-        document.getElementById('userName').value = '';
-        document.getElementById('userMessage').value = '';
-    }
+          document.getElementById('userName').value = '';
+          document.getElementById('userMessage').value = '';
+      }
 
-    // خوێندنەوەی کۆمێنتەکان لە فایەربەیس
-    database.ref("comments").on("value", (snapshot) => {
-        const container = document.getElementById('commentsContainer');
-        container.innerHTML = "";
+      // خوێندنەوەی کۆمێنتەکان لە فایەربەیس
+      database.ref("comments").on("value", (snapshot) => {
+          const container = document.getElementById('commentsContainer');
+          container.innerHTML = "";
 
-        snapshot.forEach((childSnapshot) => {
-            const key = childSnapshot.key;
-            const data = childSnapshot.val();
-            const firstLetter = data.name ? data.name.charAt(0).toUpperCase() : "U";
+          snapshot.forEach((childSnapshot) => {
+              const key = childSnapshot.key;
+              const data = childSnapshot.val();
 
-            let replyHTML = "";
-            if (data.reply) {
-                replyHTML = `
-                    <div style="background: #121824; border-right: 3px solid #3498db; padding: 8px; margin-top: 8px; border-radius: 4px; font-size: 13px;">
-                        <span style="color: #3498db; font-weight: bold;">وەڵامی بەڕێوەبەر:</span> 
-                        <span style="color: #ddd;">${data.reply}</span>
-                        <span onclick="deleteReply('${key}')" style="color: #e74c3c; cursor: pointer; float: left; font-size: 11px;" title="სڕینەوەی وەڵام">🗑️ سڕینەوەی وەڵام</span>
-                    </div>
-                `;
-            } else {
-                replyHTML = `
-                    <button onclick="addReply('${key}')" style="background: transparent; border: none; color: #3498db; cursor: pointer; font-size: 12px; margin-top: 6px; padding: 0;">↩️ ڕێپڵای (وەڵامدانەوە)</button>
-                `;
-            }
+              let replyHTML = "";
+              if (data.reply) {
+                  replyHTML = `
+                      <div style="background: #121824; border-right: 3px solid #3498db; padding: 8px; margin-top: 8px; border-radius: 4px; font-size: 13px;">
+                          <span style="color: #3498db; font-weight: bold;">وەڵامی بەڕێوەبەر:</span> 
+                          <span style="color: #ddd;">${data.reply}</span>
+                          <span onclick="deleteReply('${key}')" style="color: #e74c3c; cursor: pointer; float: left; font-size: 11px;" title="سڕینەوەی وەڵام">🗑️ سڕینەوەی وەڵام</span>
+                      </div>
+                  `;
+              } else {
+                  replyHTML = `
+                      <button onclick="addReply('${key}')" style="background: transparent; border: none; color: #3498db; cursor: pointer; font-size: 12px; margin-top: 6px; padding: 0;">↩️ ڕێپڵای (وەڵامدانەوە)</button>
+                  `;
+              }
 
-            const commentHTML = `
-                <div class="comment-card" id="card-${key}" style="background: #151a23; border: 1px solid #333; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <div>
-                            <h4 style="color: #f2a900; margin: 0 0 4px 0;">${data.name}</h4>
-                            <p style="color: #a0a6b8; font-size: 14px; margin: 0;">${data.message}</p>
-                        </div>
-                        <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوەی کۆمێنت" style="background: transparent; border: none; cursor: pointer; font-size: 16px;">🗑️</button>
-                    </div>
-                    ${replyHTML}
-                </div>
-            `;
-            container.innerHTML += commentHTML;
-        });
-    });
+              const commentHTML = `
+                  <div class="comment-card" id="card-${key}" style="background: #151a23; border: 1px solid #333; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                      <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                          <div>
+                              <h4 style="color: #f2a900; margin: 0 0 4px 0;">${data.name}</h4>
+                              <p style="color: #a0a6b8; font-size: 14px; margin: 0;">${data.message}</p>
+                          </div>
+                          <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوەی کۆمێنت" style="background: transparent; border: none; cursor: pointer; font-size: 16px;">🗑️</button>
+                      </div>
+                      ${replyHTML}
+                  </div>
+              `;
+              container.innerHTML += commentHTML;
+          });
+      });
 
-    // سڕینەوەی کۆمێنت بە پاسوۆرد
-    function deleteComment(key) {
-        const password = prompt("تکایە وشەی نهێنی (پاسوۆرد)ی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
-        if (password === ADMIN_PASSWORD) {
-            database.ref("comments/" + key).remove();
-            alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
-        } else if (password !== null) {
-            alert("وشەی نهێنی هەڵەیە!");
-        }
-    }
+      // سڕینەوەی کۆمێنت بە پاسوۆرد
+      function deleteComment(key) {
+          const password = prompt("تکایە وشەی نهێنی (پاسوۆرد)ی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
+          if (password === ADMIN_PASSWORD) {
+              database.ref("comments/" + key).remove();
+              alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
+          } else if (password !== null) {
+              alert("وشەی نهێنی هەڵەیە!");
+          }
+      }
 
-    // زیادکردنی ڕێپڵای (وەڵامدانەوە)
-    function addReply(key) {
-        const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ نوسینی ڕێپڵای:");
-        if (password === ADMIN_PASSWORD) {
-            const replyText = prompt("وەڵامەکەت بنووسە:");
-            if (replyText) {
-                database.ref("comments/" + key).update({
-                    reply: replyText
-                });
-            }
-        } else if (password !== null) {
-            alert("وشەی نهێنی هەڵەیە!");
-        }
-    }
+      // زیادکردنی ڕێپڵای (وەڵامدانەوە)
+      function addReply(key) {
+          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ نوسینی ڕێپڵای:");
+          if (password === ADMIN_PASSWORD) {
+              const replyText = prompt("وەڵامەکەت بنووسە:");
+              if (replyText) {
+                  database.ref("comments/" + key).update({
+                      reply: replyText
+                  });
+              }
+          } else if (password !== null) {
+              alert("وشەی نهێنی هەڵەیە!");
+          }
+      }
 
-    // سڕینەوەی ڕێپڵای
-    function deleteReply(key) {
-        const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ سڕینەوەی ڕێپڵای:");
-        if (password === ADMIN_PASSWORD) {
-            database.ref("comments/" + key).update({
-                reply: ""
-            });
-        } else if (password !== null) {
-            alert("وشەی نهێنی هەڵەیە!");
-        }
-    }
-</script>
+      // سڕینەوەی ڕێپڵای
+      function deleteReply(key) {
+          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ سڕینەوەی ڕێپڵای:");
+          if (password === ADMIN_PASSWORD) {
+              database.ref("comments/" + key).update({
+                  reply: ""
+              });
+          } else if (password !== null) {
+              alert("وشەی نهێنی هەڵەیە!");
+          }
+      }
+  </script>
+</body>
+</html>
