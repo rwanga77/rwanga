@@ -5,26 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تۆپی پێ و پەخشی ڕاستەوخۆ</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .football-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        .news-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: right;
+        }
+        .live-btn {
+            display: inline-block;
+            background-color: #238636;
+            color: white;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+        .live-btn:hover {
+            background-color: #2ea043;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #58a6ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body style="background-color: #0d1117; color: #c9d1d9; font-family: Tahoma, sans-serif; text-align: center; padding: 20px;">
+<body style="background-color: #0d1117; color: #c9d1d9; font-family: Tahoma, sans-serif; margin: 0; padding: 20px;">
 
-    <h1 style="color: #ffc107;">⚽ زانیاری و پەخشی ڕاستەوخۆی یارییەکان</h1>
-    <p>لێرە دەتوانیت نوێترین زانیارییە وەرزشییەکان و پەخشی ڕاستەوخۆی یارییەکان بە بێ پچڕان ببینیت.</p>
+    <div class="football-container">
+        <h1 style="color: #ffc107; margin-bottom: 10px;">⚽ زانیاری و پەخشی ڕاستەوخۆی یارییەکان</h1>
+        <p style="color: #8b949e;">لێرە دەتوانیت نوێترین هەواڵە وەرزشییەکان و لینکەکانی پەخشی ڕاستەوخۆ بە بێ پچڕان ببینیت.</p>
 
-    <!-- بەشی زانیاری و هەواڵەکان (لێرە دەتوانیت هەر زانیارییەکت ویست بینوسیت) -->
-    <div style="background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; max-width: 600px; margin: 20px auto; text-align: right;">
-        <h3 style="color: #58a6ff; margin-bottom: 10px;">📌 دوایین هەواڵ و زانیارییەکان:</h3>
-        <p style="line-height: 1.6;">- خشتەی یارییەکانی ئەمڕۆ و ئەنجامه سەرەکییەکان لێرە بڵاو دەکرێنەوە.</p>
-        <p style="line-height: 1.6;">- چاوەڕوانی خشتەی نوێی خولە ئەوروپییەکان بن.</p>
+        <!-- بەشی زانیاری و هەواڵەکان -->
+        <div class="news-box">
+            <h3 style="color: #58a6ff; margin-top: 0; margin-bottom: 15px;">📌 دوایین هەواڵ و خشتەی یارییەکان:</h3>
+            <p style="line-height: 1.8; margin: 8px 0;">⚽ چاوەڕوانی خشتەی یارییە بەهێزەکانی ئەمشەو بن.</p>
+            <p style="line-height: 1.8; margin: 8px 0;">📊 ئەنجامە سەرەکییەکان و ڕیزبەندی خولەکان لێرە نوێ دەکرێنەوە.</p>
+        </div>
+
+        <!-- دوگمەی پەخشی ڕاستەوخۆ -->
+        <div>
+            <a href="https://www.yallashoot.com" target="_blank" class="live-btn">📺 تەماشاکردنی یارییەکان (پەخشی ڕاستەوخۆ)</a>
+        </div>
+
+        <!-- گەڕانەوە -->
+        <div>
+            <a href="index.html" class="back-link">⬅ گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
+        </div>
     </div>
-
-    <!-- دوگمەی پەخشی ڕاستەوخۆی بێ پچڕان -->
-    <div style="margin-top: 30px;">
-        <a href="https://www.yallashoot.com" target="_blank" class="btn" style="background-color: #238636; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px;">📺 تەماشاکردنی یارییەکان (پەخشی ڕاستەوخۆ)</a>
-    </div>
-
-    <br><br>
-    <a href="index.html" class="btn" style="color: #58a6ff; text-decoration: none;">⬅ گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
 
 </body>
 </html>
