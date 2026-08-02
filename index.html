@@ -10,6 +10,10 @@
 
   <!-- بەستنەوە بە فایلی CSS -->
   <link rel="stylesheet" href="style.css">
+
+  <!-- کتێبخانەکانی فایەربەیس (پێویستن بۆ کارکردنی کۆمێنت) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 </head>
 <body>
 
@@ -127,27 +131,36 @@
       <a href="cv.html" class="btn">سەیرکردنی CV 📄</a>
     </div>
 
-    <!-- ١٣. بەشی ڕەخنە و پێشنیارەکان (فایەربەیس + ڕێپڵای + سڕینەوە) -->
-    <div class="card" style="width: 100%; max-width: 600px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 20px auto; color: #fff;">
-        <h3 style="color: #f2a900; margin-top: 0;">💬 ڕەخنە و پێشنیارەکان</h3>
+    <!-- ١٣. بەشی ڕەخنە و پێشنیارەکان -->
+    <div class="card" style="width: 300px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); color: #fff; box-sizing: border-box;">
+        <h3 style="color: #f2a900; margin-top: 0; font-size: 18px;">💬 ڕەخنە و پێشنیارەکان</h3>
         
         <!-- سندوقی نوسینی کۆمێنت -->
-        <div style="margin-bottom: 20px;">
-            <input type="text" id="userName" placeholder="ناوی خۆت..." style="width: 100%; padding: 10px; margin-bottom: 8px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box;">
-            <textarea id="userMessage" rows="3" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; padding: 10px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; resize: none;"></textarea>
-            <button onclick="postComment()" class="btn" style="width: 100%; background: #c0392b; color: white; padding: 10px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 8px;">ناردنی پەیام</button>
+        <div style="margin-bottom: 15px;">
+            <input type="text" id="userName" placeholder="ناوی خۆت..." style="width: 100%; padding: 8px; margin-bottom: 6px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; font-size: 13px;">
+            <textarea id="userMessage" rows="2" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; padding: 8px; background: #121824; border: 1px solid #444; color: #fff; border-radius: 6px; box-sizing: border-box; resize: none; font-size: 13px;"></textarea>
+            <button onclick="postComment()" class="btn" style="width: 100%; background: #c0392b; color: white; padding: 8px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 6px; font-size: 13px;">ناردنی پەیام</button>
         </div>
 
         <!-- شوێنی نیشاندانی کۆمێنت و ڕێپڵایەکان -->
-        <div id="commentsContainer"></div>
+        <div id="commentsContainer" style="max-height: 250px; overflow-y: auto;"></div>
     </div>
 
   </div>
 
   <script>
-      const ADMIN_PASSWORD = "123"; // لێرە پاسوۆردی بەڕێوەبەرە (دەتوانیت بیگۆڕیت)
+      // زانیاری بەستنەوە بە فایەربەیسی ماڵپەڕەکەت
+      const firebaseConfig = {
+          databaseURL: "https://rwanga-default-rtdb.firebaseio.com/"
+      };
+      
+      if (!firebase.apps.length) {
+          firebase.initializeApp(firebaseConfig);
+      }
+      const database = firebase.database();
 
-      // ناردنی کۆمێنتی سەرەکی
+      const ADMIN_PASSWORD = "123"; // پاسوۆردی بەڕێوەبەر
+
       function postComment() {
           const name = document.getElementById('userName').value;
           const message = document.getElementById('userMessage').value;
@@ -161,14 +174,17 @@
           newCommentRef.set({
               name: name,
               message: message,
-              reply: "" // سەرەتای بێ ڕێپڵای
+              reply: ""
+          }).then(() => {
+              alert('پەیامەکەت بە سەرکەوتوویی نێردرا!');
+          }).catch((error) => {
+              alert('هەڵەیەک ڕوویدا لە ناردنی پەیامەکە!');
           });
 
           document.getElementById('userName').value = '';
           document.getElementById('userMessage').value = '';
       }
 
-      // خوێندنەوەی کۆمێنتەکان لە فایەربەیس
       database.ref("comments").on("value", (snapshot) => {
           const container = document.getElementById('commentsContainer');
           container.innerHTML = "";
@@ -180,26 +196,26 @@
               let replyHTML = "";
               if (data.reply) {
                   replyHTML = `
-                      <div style="background: #121824; border-right: 3px solid #3498db; padding: 8px; margin-top: 8px; border-radius: 4px; font-size: 13px;">
-                          <span style="color: #3498db; font-weight: bold;">وەڵامی بەڕێوەبەر:</span> 
+                      <div style="background: #121824; border-right: 3px solid #3498db; padding: 6px; margin-top: 6px; border-radius: 4px; font-size: 11px;">
+                          <span style="color: #3498db; font-weight: bold;">وەڵام:</span> 
                           <span style="color: #ddd;">${data.reply}</span>
-                          <span onclick="deleteReply('${key}')" style="color: #e74c3c; cursor: pointer; float: left; font-size: 11px;" title="سڕینەوەی وەڵام">🗑️ سڕینەوەی وەڵام</span>
+                          <span onclick="deleteReply('${key}')" style="color: #e74c3c; cursor: pointer; float: left;" title="سڕینەوەی وەڵام">🗑️</span>
                       </div>
                   `;
               } else {
                   replyHTML = `
-                      <button onclick="addReply('${key}')" style="background: transparent; border: none; color: #3498db; cursor: pointer; font-size: 12px; margin-top: 6px; padding: 0;">↩️ ڕێپڵای (وەڵامدانەوە)</button>
+                      <button onclick="addReply('${key}')" style="background: transparent; border: none; color: #3498db; cursor: pointer; font-size: 11px; margin-top: 4px; padding: 0;">↩️ ڕێپڵای</button>
                   `;
               }
 
               const commentHTML = `
-                  <div class="comment-card" id="card-${key}" style="background: #151a23; border: 1px solid #333; padding: 12px; border-radius: 8px; margin-bottom: 10px;">
+                  <div class="comment-card" id="card-${key}" style="background: #151a23; border: 1px solid #333; padding: 8px; border-radius: 6px; margin-bottom: 8px;">
                       <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                           <div>
-                              <h4 style="color: #f2a900; margin: 0 0 4px 0;">${data.name}</h4>
-                              <p style="color: #a0a6b8; font-size: 14px; margin: 0;">${data.message}</p>
+                              <h4 style="color: #f2a900; margin: 0 0 2px 0; font-size: 13px;">${data.name}</h4>
+                              <p style="color: #a0a6b8; font-size: 12px; margin: 0;">${data.message}</p>
                           </div>
-                          <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوەی کۆمێنت" style="background: transparent; border: none; cursor: pointer; font-size: 16px;">🗑️</button>
+                          <button class="delete-btn" onclick="deleteComment('${key}')" title="سڕینەوەی کۆمێنت" style="background: transparent; border: none; cursor: pointer; font-size: 13px;">🗑️</button>
                       </div>
                       ${replyHTML}
                   </div>
@@ -208,20 +224,18 @@
           });
       });
 
-      // سڕینەوەی کۆمێنت بە پاسوۆرد
       function deleteComment(key) {
-          const password = prompt("تکایە وشەی نهێنی (پاسوۆرد)ی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
+          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ سڕینەوە:");
           if (password === ADMIN_PASSWORD) {
               database.ref("comments/" + key).remove();
-              alert("کۆمێنتەکە بە سەرکەوتوویی سڕدرایەوە!");
+              alert("کۆمێنتەکە سڕدرایەوە!");
           } else if (password !== null) {
-              alert("وشەی نهێنی هەڵەیە!");
+              alert("پاسوۆرد هەڵەیە!");
           }
       }
 
-      // زیادکردنی ڕێپڵای (وەڵامدانەوە)
       function addReply(key) {
-          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ نوسینی ڕێپڵای:");
+          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ ڕێپڵای:");
           if (password === ADMIN_PASSWORD) {
               const replyText = prompt("وەڵامەکەت بنووسە:");
               if (replyText) {
@@ -230,19 +244,18 @@
                   });
               }
           } else if (password !== null) {
-              alert("وشەی نهێنی هەڵەیە!");
+              alert("پاسوۆرد هەڵەیە!");
           }
       }
 
-      // سڕینەوەی ڕێپڵای
       function deleteReply(key) {
-          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ سڕینەوەی ڕێپڵای:");
+          const password = prompt("پاسوۆردی بەڕێوەبەر بنووسە بۆ سڕینەوەی وەڵام:");
           if (password === ADMIN_PASSWORD) {
               database.ref("comments/" + key).update({
                   reply: ""
               });
           } else if (password !== null) {
-              alert("وشەی نهێنی هەڵەیە!");
+              alert("پاسوۆرد هەڵەیە!");
           }
       }
   </script>
