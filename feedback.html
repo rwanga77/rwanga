@@ -1,8 +1,53 @@
-<div class="card" style="width: 300px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 10px;">
-    <h3 style="color: #f2a900; margin-top: 0; font-size: 18px;">💬 ڕەخنە و پێشنیارەکان</h3>
-    <p style="color: #ccc; font-size: 13px; margin-bottom: 15px;">بۆچوون و پێشنیارەکانتان لێرە بنووسن:</p>
+<div class="card">
+    <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Feedback" style="width: 100%; height: 140px; object-fit: cover; border-radius: 8px;">
+    <p style="color: #f2a900; font-weight: bold; margin-bottom: 8px; margin-top: 10px;">ڕەخنە و پێشنیارەکان</p>
     
-    <!-- سندوقی نووسینی پەیام و دوگمە -->
-    <textarea rows="3" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; background: #121824; border: 1px solid #444; border-radius: 6px; color: #fff; padding: 10px; box-sizing: border-box; resize: none; font-family: Tahoma, sans-serif;"></textarea>
-    <button class="btn" style="width: 100%; background-color: #c0392b; color: white; padding: 10px; border: none; border-radius: 6px; margin-top: 10px; font-weight: bold; cursor: pointer;">ناردنی پەیام</button>
+    <!-- فۆڕمی نوسینی پەیام -->
+    <input type="text" id="senderName" placeholder="ناوی خۆت..." style="width: 100%; background: #121824; border: 1px solid #444; border-radius: 6px; color: #fff; padding: 6px; box-sizing: border-box; margin-bottom: 6px; font-size: 13px;">
+    <textarea id="senderText" rows="2" placeholder="بۆچوونەکەت لێرە بنووسە..." style="width: 100%; background: #121824; border: 1px solid #444; border-radius: 6px; color: #fff; padding: 6px; box-sizing: border-box; resize: none; font-family: Tahoma, sans-serif; font-size: 13px; margin-bottom: 8px;"></textarea>
+    <button onclick="addComment()" class="btn" style="margin-top: 0; padding: 8px; font-size: 13px;">ناردنی پەیام ✉</button>
+
+    <!-- ئەو شوێنەی کۆمێنت و ڕێپڵایەکانی تێدا دەردەکەوێت -->
+    <div id="commentsContainer" style="margin-top: 15px; max-height: 200px; overflow-y: auto; text-align: right;"></div>
 </div>
+
+<script>
+function addComment() {
+    const name = document.getElementById('senderName').value;
+    const text = document.getElementById('senderText').value;
+    
+    if(name.trim() === '' || text.trim() === '') {
+        alert('تکایە ناو و پەیامەکە پربکەرەوە!');
+        return;
+    }
+
+    const container = document.getElementById('commentsContainer');
+    
+    const commentBox = document.createElement('div0');
+    commentBox.style.cssText = "background: #121824; padding: 8px; border-radius: 6px; margin-bottom: 8px; font-size: 12px; border: 1px solid #333;";
+    
+    commentBox.innerHTML = `
+        <strong style="color: #f2a900;">${name}</strong>
+        <p style="margin: 4px 0; color: #ddd;">${text}</p>
+        <div style="display: flex; gap: 10px; margin-top: 5px;">
+            <span onclick="this.parentElement.parentElement.remove()" style="color: #e74c3c; cursor: pointer; font-weight: bold;">سڕینەوە 🗑️</span>
+            <span onclick="replyComment(this)" style="color: #3498db; cursor: pointer;">ڕێپڵای ↩️</span>
+        </div>
+    `;
+    
+    container.appendChild(commentBox);
+    
+    document.getElementById('senderName').value = '';
+    document.getElementById('senderText').value = '';
+}
+
+function replyComment(element) {
+    const replyText = prompt('وەڵامەکەت بنووسە:');
+    if(replyText) {
+        const replyBox = document.createElement('div');
+        replyBox.style.cssText = "margin-right: 15px; margin-top: 5px; background: #1a2230; padding: 5px; border-radius: 4px; font-size: 11px; border-left: 2px solid #3498db;";
+        replyBox.innerHTML = `<span style="color: #3498db; font-weight: bold;">وەڵام:</span> ${replyText} <span onclick="this.parentElement.remove()" style="color: #e74c3c; cursor: pointer; float: left;">❌</span>`;
+        element.parentElement.parentElement.appendChild(replyBox);
+    }
+}
+</script>
