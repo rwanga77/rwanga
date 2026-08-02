@@ -1,57 +1,8 @@
-<!DOCTYPE html>
-<html lang="ku" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ڕەخنە و پێشنیار - ڕوانگە</title>
-    <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background-color: #121824;
-            color: #ffffff;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: #1e2532;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
-        h2 {
-            color: #f39c12;
-            text-align: center;
-        }
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .back-btn:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <a href="index.html" class="back-btn">← گەڕانەوە بۆ پەڕەی سەرەکی</a>
-        <h2>ڕەخنە و پێشنیارەکان</h2>
-        <p>بۆچوون، ڕەخنە یان پێشنیاری خۆتان لێرە بۆمان بنووسن (دەتوانیت کۆمێنت بنووسیت و وەڵامی یەکتریش بدەنەوە):</p>
-        
-        <!-- سیستەمی کۆمێنت و ڕێپڵای (Utterances) -->
-        <script src="https://utteranc.es/client.js"
-                repo="rwanga77/rwanga"
-                issue-term="pathname"
-                theme="github-dark"
-                crossorigin="anonymous"
-                async>
-        </script>
-    </div>
-
-</body>
-</html>
+<div class="card" style="width: 300px; background: #1e2532; border: 1px solid #333; border-radius: 12px; padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin: 10px;">
+    <h3 style="color: #f2a900; margin-top: 0; font-size: 18px;">💬 ڕەخنە و پێشنیارەکان</h3>
+    <p style="color: #ccc; font-size: 13px; margin-bottom: 15px;">بۆچوون و پێشنیارەکانتان لێرە بنووسن:</p>
+    
+    <!-- سندوقی نووسینی پەیام و دوگمە -->
+    <textarea rows="3" placeholder="ڕەخنە یان پێشنیارەکەت بنووسە..." style="width: 100%; background: #121824; border: 1px solid #444; border-radius: 6px; color: #fff; padding: 10px; box-sizing: border-box; resize: none; font-family: Tahoma, sans-serif;"></textarea>
+    <button class="btn" style="width: 100%; background-color: #c0392b; color: white; padding: 10px; border: none; border-radius: 6px; margin-top: 10px; font-weight: bold; cursor: pointer;">ناردنی پەیام</button>
+</div>
