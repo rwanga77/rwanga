@@ -12,16 +12,15 @@
         <article class="post-card">
             
             <h1 style="text-align: center;">داواکردنی دروستکردنی CV 📄</h1>
-            <p style="text-align: center; color: #ccc;">تکایە زانیارییەکانت بە دروستی پڕبکەرەوە تا سی ڤییەکی پڕۆفێشناڵت بۆ دروست بکەین.</p>
+            <p style="text-align: center; color: #ccc;">زانیارییەکانت پڕبکەرەوە، دیزاینی دڵخوازت هەڵبژێرە، و داواکارییەکەت بنێرە.</p>
 
             <hr style="margin: 20px 0; border: 0.5px solid #444;">
 
-            <!-- 📩 سندوقی وەرگرتنی زانیاری کە ڕاستەوخۆ دەگاتە ئیمەیڵی خۆت -->
+            <!-- 📩 فۆرمی ناردنی داواکاری -->
             <form action="https://formsubmit.co/zardagyan999@gmail.com" method="POST" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 15px; margin-top: 20px;">
                 
-                <!-- بۆ ئەوەی دوای ناردن بگەڕێتەوە بۆ لاپەڕەی خۆت -->
                 <input type="hidden" name="_next" value="https://rwanga77.github.io/rwanga/cv.html">
-                <input type="hidden" name="_subject" value="داواکارییەکی نوێ بۆ دروستکردنی CV هات!">
+                <input type="hidden" name="_subject" value="داواکارییەکی نوێ بۆ دروستکردنی CV لەگەڵ پسووڵەی فاست پەی!">
 
                 <!-- 1. زانیاری کەسی -->
                 <h3 style="color: #ffc107; margin-bottom: 5px;">👤 زانیارییە کەسییەکان</h3>
@@ -57,67 +56,88 @@
                 <input type="text" name="address" placeholder="وەک: سلێمانی - سەرچنار" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
 
                 <label style="font-weight: bold;">ژمارەی تەلەفۆن / واتسئاپ:</label>
-                <input type="tel" name="phone" placeholder="07XXXXXXXXX" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
+                <input type="tel" name="phone_number" placeholder="وەک: 07701234567" required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
 
-                <label style="font-weight: bold;">ئیمەیڵی بەکارهێنەر:</label>
+                <label style="font-weight: bold;">ئیمەیڵی بەکارهێنەر (بۆ ناردنەوەی PDF):</label>
                 <input type="email" name="user_email" placeholder="ئیمەیڵەکەت بنووسە..." required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
 
-                <!-- 🖼️ بەشی ناردنی وێنە -->
+                <!-- 🖼️ بەشی ناردنی وێنەی کەسی بۆ CV -->
                 <div style="background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px dashed #666; margin-top: 5px;">
                     <label style="font-weight: bold; display: block; margin-bottom: 8px; color: #ffc107;">📸 بەرزکردنەوەی وێنەی کەسی (بۆ سەر CV):</label>
                     <input type="file" name="attachment" accept="image/*" style="color: #ccc;">
-                    <small style="display: block; color: #888; margin-top: 5px;">* ئەگەر دەتەوێت وێنەت لەسەر CVیەکە هەبێت، وێنەیەکی ڕوون هەڵبژێرە.</small>
                 </div>
 
-                <!-- 2. زانیاری پسپۆڕی و خوێندن -->
+                <!-- 🎨 2. بەشی هەڵبژاردنی دیزاین و ڕەنگ -->
+                <div style="background: #1e1e2f; padding: 15px; border-radius: 8px; border: 1px solid #58a6ff; margin-top: 10px;">
+                    <h3 style="color: #58a6ff; margin-bottom: 10px;">✨ هەڵبژاردنی دیزاینی CV</h3>
+                    <label style="font-weight: bold; display: block; margin-bottom: 5px;">شێوازی دیزاین و ڕەنگ:</label>
+                    <select name="cv_design" required style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
+                        <option value="" disabled selected>دیزاینێک هەڵبژێرە...</option>
+                        <option value="ديزاینی فەرمی - ڕەش و شین (Modern Blue)">دیزاینی فەرمی - ڕەش و شین (Modern Blue)</option>
+                        <option value="ديزاینی سەرنجڕاکێش - ڕەش و زێڕین (Luxury Gold)">دیزاینی سەرنجڕاکێش - ڕەش و زێڕین (Luxury Gold)</option>
+                        <option value="ديزاینی مۆدێرن - سەوز و ڕەش (Eco Green)">دیزاینی مۆدێرن - سەوز و ڕەش (Eco Green)</option>
+                        <option value="ديزاینی سادە و پوخت - خۆڵەمێشی (Simple Gray)">دیزاینی سادە و پوخت - خۆڵەمێشی (Simple Gray)</option>
+                    </select>
+                </div>
+
+                <!-- 3. زانیاری پسپۆڕی و خوێندن -->
                 <h3 style="color: #ffc107; margin-top: 15px; margin-bottom: 5px;">🎓 بەڵگەنامە و پسپۆڕی</h3>
 
                 <label style="font-weight: bold;">بەش یان بڕوانامە / پسپۆڕی:</label>
                 <input type="text" name="job" placeholder="وەک: دەرچووی بەشی کۆمپیوتەر / مامۆستا..." required style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;">
 
                 <label style="font-weight: bold;">شارەزایی و لێهاتووییەکان (Skills):</label>
-                <textarea name="skills" rows="3" placeholder="وەک: کارکردن لەگەڵ مایکرۆسۆفت ئۆفیس، دیزاین، کارکردنی بەکۆمەڵ..." style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;"></textarea>
+                <textarea name="skills" rows="3" placeholder="وەک: کارکردن لەگەڵ مایکرۆسۆفت ئۆفیس، دیزاین..." style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;"></textarea>
 
-                <!-- 3. بەشی دیاریکردنی ئاستی زمانەکان -->
+                <!-- 4. بەشی ئاستی زمانەکان -->
                 <div style="margin-top: 10px; background: #1a1a1a; padding: 15px; border-radius: 8px; border: 1px solid #333;">
                     <h3 style="color: #ffc107; margin-bottom: 15px;">🌐 ئاستی زمانەکان</h3>
 
-                    <!-- زمانی ئینگلیزی -->
                     <label style="font-weight: bold; display: block; margin-bottom: 8px;">ئاستی زمانی ئینگلیزی:</label>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 15px;">
-                        <label><input type="radio" name="english_level" value="A1" required> A1 (سەرەتایی)</label>
-                        <label><input type="radio" name="english_level" value="A2"> A2 (بنەڕەتی)</label>
-                        <label><input type="radio" name="english_level" value="B1"> B1 (ناوەند)</label>
-                        <label><input type="radio" name="english_level" value="B2"> B2 (سەروو ناوەند)</label>
-                        <label><input type="radio" name="english_level" value="C1"> C1 (پێشکەوتوو)</label>
-                        <label><input type="radio" name="english_level" value="C2"> C2 (شارەزا)</label>
+                        <label><input type="radio" name="english_level" value="A1" required> A1</label>
+                        <label><input type="radio" name="english_level" value="A2"> A2</label>
+                        <label><input type="radio" name="english_level" value="B1"> B1</label>
+                        <label><input type="radio" name="english_level" value="B2"> B2</label>
+                        <label><input type="radio" name="english_level" value="C1"> C1</label>
+                        <label><input type="radio" name="english_level" value="C2"> C2</label>
                     </div>
 
                     <hr style="border: 0.5px solid #333; margin: 15px 0;">
 
-                    <!-- زمانی عەرەبی -->
                     <label style="font-weight: bold; display: block; margin-bottom: 8px;">ئاستی زمانی عەرەبی:</label>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <label><input type="radio" name="arabic_level" value="A1" required> A1 (سەرەتایی)</label>
-                        <label><input type="radio" name="arabic_level" value="A2"> A2 (بنەڕەتی)</label>
-                        <label><input type="radio" name="arabic_level" value="B1"> B1 (ناوەند)</label>
-                        <label><input type="radio" name="arabic_level" value="B2"> B2 (سەروو ناوەند)</label>
-                        <label><input type="radio" name="arabic_level" value="C1"> C1 (پێشکەوتوو)</label>
-                        <label><input type="radio" name="arabic_level" value="C2"> C2 (شارەزا)</label>
+                        <label><input type="radio" name="arabic_level" value="A1" required> A1</label>
+                        <label><input type="radio" name="arabic_level" value="A2"> A2</label>
+                        <label><input type="radio" name="arabic_level" value="B1"> B1</label>
+                        <label><input type="radio" name="arabic_level" value="B2"> B2</label>
+                        <label><input type="radio" name="arabic_level" value="C1"> C1</label>
+                        <label><input type="radio" name="arabic_level" value="C2"> C2</label>
                     </div>
                 </div>
 
-                <!-- 4. بەشی ئەزموون و تێبینی -->
                 <label style="font-weight: bold; margin-top: 10px;">ئەزموونی کارکردن یان ڕاهێنان (Experience):</label>
-                <textarea name="experience" rows="4" placeholder="ئەو شوێن یان کۆمپانیایانەی پێشتر کارت تێدا کردووە یان تێبینی زیاتر..." style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;"></textarea>
+                <textarea name="experience" rows="4" placeholder="ئەو شوێن یان کۆمپانیایانەی پێشتر کارت تێدا کردووە..." style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff;"></textarea>
+
+                <!-- 💰 5. بەشی پارەدان و ناردنی پسووڵەی فاست پەی -->
+                <div style="background: #112211; padding: 20px; border-radius: 8px; border: 2px solid #28a745; margin-top: 15px;">
+                    <h3 style="color: #28a745; margin-bottom: 10px;">💳 زانیاری پارەدان (فاست پەی)</h3>
+                    <p style="color: #ddd; font-size: 14px; line-height: 1.6; margin-bottom: 15px;">
+                        تکایە بڕی پارەکە بنێرە بۆ ئەم ژمارەیەی **FastPay**: <span style="color: #ffc107; font-weight: bold; font-size: 1.1rem;">07703328444</span><br>
+                        پاشان وێنەی پسووڵەی پارەدانەکە (Screen-shot) لە خوارەوە بار بکە:
+                    </p>
+
+                    <label style="font-weight: bold; display: block; margin-bottom: 8px; color: #ffc107;">📎 بەرزکردنەوەی وێنەی پسووڵەی فاست پەی:</label>
+                    <input type="file" name="payment_receipt" accept="image/*" required style="color: #ccc;">
+                </div>
 
                 <!-- دوگمەی ناردن -->
-                <button type="submit" class="btn" style="background-color: #28a745; font-size: 1.1rem; padding: 12px; cursor: pointer; margin-top: 10px;">ناردنی زانیارییەکان 🚀</button>
+                <button type="submit" class="btn" style="background-color: #28a745; font-size: 1.1rem; padding: 12px; cursor: pointer; margin-top: 15px;">ناردنی داواکاری و پسووڵە 🚀</button>
 
             </form>
 
             <br><br>
-            <!-- دوگمەی گەڕانەوە بۆ لاپەڕەی سەرەکی -->
+            <!-- گەڕانەوە بۆ لاپەڕەی سەرەکی -->
             <a href="index.html" class="btn-back">⬅ گەڕانەوە بۆ لاپەڕەی سەرەکی</a>
 
         </article>
